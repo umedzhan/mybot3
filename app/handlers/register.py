@@ -46,4 +46,3 @@ async def get_age(message: types.Message, state: FSMContext):
         f"Yosh: {age}"
     )
 
-    await state.clear()
