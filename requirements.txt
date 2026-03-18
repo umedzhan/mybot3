@@ -1,3 +1,4 @@
 aiogram >= 3.26.0
 python-dotenv
 asyncio >= 4.0.0
+psycopg2
