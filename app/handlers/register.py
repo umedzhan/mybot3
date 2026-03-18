@@ -2,6 +2,11 @@ from aiogram import Router, types
 from aiogram.filters import Command, CommandStart
 from aiogram.fsm.context import FSMContext
 from app.keyboards.keyboards import keyboard_start, keyboard_phone_number, keyboard_courses
+import os
+from dotenv import load_dotenv
+load_dotenv()
+
+isAdmin = lambda x: os.getenv('ADMIN') == str(x)
 
 from app.database.postgres import Register as RegisterUser, addUserInfo
 
@@ -14,7 +19,7 @@ async def start_handler(message: types.Message):
     chatId = message.chat.id
     firstName = message.chat.first_name
     RegisterUser(chat_id=chatId, first_name=firstName)
-    await message.answer(f"Salom xush kelibsiz! {firstName}", reply_markup=keyboard_start)
+    await message.answer(f"Salom xush kelibsiz! {firstName}", reply_markup=keyboard_start(isAdmin(chatId)))
 
 # start register
 @router.message(lambda msg: msg.text == "Ro'yxatdan o'tish")

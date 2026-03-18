@@ -1,17 +1,22 @@
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 
-keyboard_start = ReplyKeyboardMarkup(
-    keyboard=[
+def keyboard_start(isAdmin = False):
+    keyboard = [
         [KeyboardButton(text="Ro'yxatdan o'tish")]
-    ],
-    resize_keyboard=True
-)
+    ]
+    if isAdmin: keyboard.append([KeyboardButton(text="Admin panel")])
+    return ReplyKeyboardMarkup(
+        keyboard=keyboard,
+        resize_keyboard=True,
+        one_time_keyboard=True
+    )
 
 keyboard_phone_number = ReplyKeyboardMarkup(
     keyboard=[
         [KeyboardButton(text="Raqamni yuborish", request_contact=True)]
     ],
-    resize_keyboard=True
+    resize_keyboard=True,
+    one_time_keyboard=True
 )
 
 keyboard_courses = ReplyKeyboardMarkup(
