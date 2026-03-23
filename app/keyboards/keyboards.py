@@ -1,4 +1,4 @@
-from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
+from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardButton, InlineKeyboardMarkup
 
 def keyboard_start(isAdmin = False):
     keyboard = [
@@ -26,4 +26,11 @@ keyboard_courses = ReplyKeyboardMarkup(
     ],
     resize_keyboard=True,
     one_time_keyboard=True
+)
+
+keyboard_admin_panel = InlineKeyboardMarkup(
+    inline_keyboard=[
+        [InlineKeyboardButton(text="Foydalanuvchilar", callback_data="users")],
+        [InlineKeyboardButton(text="Soni", callback_data="count_users")]
+    ]
 )
