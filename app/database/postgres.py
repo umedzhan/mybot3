@@ -37,3 +37,8 @@ def getUsers():
 def countUsers():
     cur.execute("SELECT COUNT(*) FROM users")
     return cur.fetchone()[0]
+
+def getUser(offset):
+    sql = "SELECT * FROM users ORDER BY id LIMIT 1 OFFSET %s"
+    cur.execute(sql, (offset,))
+    return cur.fetchone()
